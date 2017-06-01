@@ -1,0 +1,22 @@
+﻿<Window x:Name="mainWin" x:Class="LoL_Downgrader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoL_Downgrader"
+        mc:Ignorable="d"
+        Title="League of Legends Patch Downloader" Height="207.813" Width="360.937" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="go_button" Content="DOWNLOAD" HorizontalAlignment="Left" Margin="80,117,0,0" VerticalAlignment="Top" Width="159" Height="36" FontSize="20" Click="go_button_Click" IsEnabled="False"/>
+        <ComboBox x:Name="server_combobox" HorizontalAlignment="Left" Margin="94,35,0,0" VerticalAlignment="Top" Width="162" Height="22" SelectionChanged="server_combobox_SelectionChanged"/>
+        <TextBlock x:Name="server_text" HorizontalAlignment="Left" Margin="16,31,0,0" TextWrapping="Wrap" Text="Server:" VerticalAlignment="Top" FontSize="20"/>
+        <ComboBox x:Name="version_combobox" HorizontalAlignment="Left" Margin="80,71,0,0" VerticalAlignment="Top" Width="162" IsEnabled="False" SelectionChanged="version_combobox_SelectionChanged"/>
+        <TextBlock x:Name="version_text" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top" FontSize="20"/>
+        <Button x:Name="browse_button" Content="..." HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Width="32" Click="browse_button_Click"/>
+        <TextBox x:Name="location_box" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298"/>
+
+    </Grid>
+</Window>
