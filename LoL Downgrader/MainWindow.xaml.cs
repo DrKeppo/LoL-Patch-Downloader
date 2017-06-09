@@ -31,6 +31,7 @@ namespace LoL_Downgrader
 
         public string[] Labels = new string[] { "GamePath" };
         public string[] Vals = new string[1];
+        public List<string> Values = new List<string>();
         FolderBrowserDialog fbd = new FolderBrowserDialog();
         public string Path;
 
@@ -42,14 +43,34 @@ namespace LoL_Downgrader
                 BrowseGame();
                 CreateJson();
             }
-            LoadJsonData();
+            LoadJsonData2();
             LoadServers();
             Startup();
         }
 
+        public void LoadJsonData2()
+        {
+            JObject jObject = JObject.Parse(File.ReadAllText("settings.json"));
+            string path = (string)jObject["GamePath"];
+            Values.Add(path);
+            return;
+        }
+
+        public void LoadJsonData()
+        {
+            var jReader = JsonManager.Load("settings.json");
+            for (int i = 0; i < Labels.Length; i++)
+            {
+                if (!jReader.Dictionary.TryGetValue(Labels[i], out Vals[i]))
+                    return;
+            }
+            return;
+        }
+
         public void Startup()
         {
-            location_box.Text = Vals[0];
+            location_box.IsReadOnly = true;
+            location_box.Text = Values[0];
         }
 
         public void LoadServers()
@@ -82,9 +103,6 @@ namespace LoL_Downgrader
 
         private void go_button_Click(object sender, RoutedEventArgs e)
         {
-            //string url = "http://l3cdn.riotgames.com/releases/live/projects/lol_game_client/releases/0.0.1.20/files/DATA/Characters/Chogath/Chogath_Dandy_TX_CM.dds.compressed";
-            //WebClient wc = new WebClient();
-            //wc.DownloadFile(url, "testfile.dds");
             RunRADSKernel();
         }
 
@@ -103,7 +121,7 @@ namespace LoL_Downgrader
                 RedirectStandardInput = true,
                 RedirectStandardOutput = true,
                 CreateNoWindow = true,
-                WorkingDirectory = @"C:\Riot Games\League of Legends\RADS\system",
+                WorkingDirectory = string.Format(@"{0}\RADS\system", Values[0]),
                 Arguments = command
             };
             Process proc = new Process() { StartInfo = psi };
@@ -111,17 +129,6 @@ namespace LoL_Downgrader
             proc.Start();
             proc.WaitForExit();
             proc.Close();
-        }
-
-        public void LoadJsonData()
-        {
-            var jReader = JsonManager.Load("settings.json");
-            for (int i = 0; i < Labels.Length; i++)
-            {
-                if (!jReader.Dictionary.TryGetValue(Labels[i], out Vals[i]))
-                    return;
-            }
-            return;
         }
 
         public void CreateJson()

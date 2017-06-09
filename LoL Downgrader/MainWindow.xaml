@@ -11,7 +11,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button x:Name="go_button" Content="DOWNLOAD" HorizontalAlignment="Left" Margin="80,117,0,0" VerticalAlignment="Top" Width="159" Height="36" FontSize="20" Click="go_button_Click" IsEnabled="False"/>
-        <ComboBox x:Name="server_combobox" HorizontalAlignment="Left" Margin="94,35,0,0" VerticalAlignment="Top" Width="162" Height="22" SelectionChanged="server_combobox_SelectionChanged"/>
+        <ComboBox x:Name="server_combobox" HorizontalAlignment="Left" Margin="80,35,0,0" VerticalAlignment="Top" Width="162" Height="22" SelectionChanged="server_combobox_SelectionChanged"/>
         <TextBlock x:Name="server_text" HorizontalAlignment="Left" Margin="16,31,0,0" TextWrapping="Wrap" Text="Server:" VerticalAlignment="Top" FontSize="20"/>
         <ComboBox x:Name="version_combobox" HorizontalAlignment="Left" Margin="80,71,0,0" VerticalAlignment="Top" Width="162" IsEnabled="False" SelectionChanged="version_combobox_SelectionChanged"/>
         <TextBlock x:Name="version_text" HorizontalAlignment="Left" Margin="10,67,0,0" TextWrapping="Wrap" Text="Version:" VerticalAlignment="Top" FontSize="20"/>
